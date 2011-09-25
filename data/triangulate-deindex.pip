@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pipeline>
+	<fullname>triangulate-deindex.pip</fullname>
+	<description>No description set for this document</description>
+	<input name="inputda4685d6-50ad-4136-bf35-ee42e15ada46" number="0">
+		<file>/C:/usr/src/daeview/git/data/testrotation/vmodel20110421-257-wm.dae</file>
+		<display>
+			<x>10</x>
+			<y>10</y>
+		</display>
+	</input>
+	<output name="output9e40641d-0002-4e97-a4f2-a4c288b36ea8" number="0">
+		<file>/C:/usr/src/daeview/git/data/testrotation/vmodel20110421-257-wm-tri-deindex.dae</file>
+		<execute>no</execute>
+		<command></command>
+		<workingDir></workingDir>
+		<display>
+			<x>20</x>
+			<y>557</y>
+		</display>
+	</output>
+
+	<conditioner name="deindexer-1" idname="deindexer-1f00af2c5-d268-4b0b-8bf2-962e71b571bf" libname="deindexer">
+		<display>
+			<x>141</x>
+			<y>468</y>
+		</display>
+	</conditioner>
+	<conditioner name="bindmaterialfixer-1" idname="bindmaterialfixer-1bdd4eaa0-7849-4aff-ab37-f1dbb6e145a0" libname="bindmaterialfixer">
+		<display>
+			<x>145</x>
+			<y>134</y>
+		</display>
+	</conditioner>
+
+	<macro name="toTriangles.pip" idname="toTriangles.pip455d4115-3918-47bf-8b5b-c898fcee0596" libname="toTriangles.pip">
+		<display>
+			<x>144</x>
+			<y>295</y>
+		</display>
+	</macro>
+
+	<link start="deindexer-1f00af2c5-d268-4b0b-8bf2-962e71b571bf" startNb="0" end="output9e40641d-0002-4e97-a4f2-a4c288b36ea8" endNb="0"/>
+	<link start="inputda4685d6-50ad-4136-bf35-ee42e15ada46" startNb="0" end="bindmaterialfixer-1bdd4eaa0-7849-4aff-ab37-f1dbb6e145a0" endNb="0"/>
+	<link start="bindmaterialfixer-1bdd4eaa0-7849-4aff-ab37-f1dbb6e145a0" startNb="0" end="toTriangles.pip455d4115-3918-47bf-8b5b-c898fcee0596" endNb="0"/>
+	<link start="toTriangles.pip455d4115-3918-47bf-8b5b-c898fcee0596" startNb="0" end="deindexer-1f00af2c5-d268-4b0b-8bf2-962e71b571bf" endNb="0"/>
+
+</pipeline>
