@@ -46,8 +46,8 @@ ReadImage(LoggerFuncT &printStatusMessage,
   Image::ImageList::iterator img_iter;
   tie(img_iter, inserted) = all_images.insert(std::make_pair(image_key, Image()));
   Image &img = img_iter->second;
-  img.image = IMG_Load(full_path.native_file_string().c_str());
-  std::string ext = full_path.extension();
+  img.image = IMG_Load(full_path.native().c_str());
+  std::string ext = full_path.extension().string();
   if(_stricmp(ext.c_str(), ".bmp") == 0
     || _stricmp(ext.c_str(), ".jpg") == 0
     || _stricmp(ext.c_str(), ".png") == 0)
@@ -58,7 +58,7 @@ ReadImage(LoggerFuncT &printStatusMessage,
   if(!img.image)
   {
     all_images.erase(image_key);
-    printStatusMessage(std::string("  can not load image from ") + full_path.native_file_string());
+    printStatusMessage(std::string("  can not load image from ") + full_path.native());
     return all_images.end();
   }
 

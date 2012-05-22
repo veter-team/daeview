@@ -25,7 +25,6 @@ Node::calcBoundingBox(const Geometry::GeometryList &gl)
     for(Geometry::PointList::const_iterator p = ag->second.points.begin();
       p != ag->second.points.end(); ++p)
     {
-      float f = *p;
       // X
       if(*p > this->bbox_max.getX())
         this->bbox_max.setX(*p);
@@ -33,14 +32,12 @@ Node::calcBoundingBox(const Geometry::GeometryList &gl)
         this->bbox_min.setX(*p);
       // Y
       ++p;
-      f = *p;
       if(*p > this->bbox_max.getY())
         this->bbox_max.setY(*p);
       else if(*p < this->bbox_min.getY())
         this->bbox_min.setY(*p);
       // Z
       ++p;
-      f = *p;
       if(*p > this->bbox_max.getZ())
         this->bbox_max.setZ(*p);
       else if(*p < this->bbox_min.getZ())

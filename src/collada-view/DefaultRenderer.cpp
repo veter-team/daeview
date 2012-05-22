@@ -294,7 +294,7 @@ DefaultRenderer::setScene(SceneGraph *sg)
       {
         GLuint index_count = iv.size();
         gb.index_data_array.push_back(std::make_pair(index_data_array, index_count));
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(size_t) * index_count, &(iv[0]), GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(PolyGroup::IndexVector::value_type) * index_count, &(iv[0]), GL_STATIC_DRAW);
       }
       else
         glDeleteBuffers(1, &index_data_array);

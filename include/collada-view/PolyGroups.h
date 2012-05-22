@@ -7,7 +7,7 @@
 
 struct PolyGroup
 {
-  typedef std::vector<size_t> IndexVector;
+  typedef std::vector<unsigned int> IndexVector;
   typedef std::vector<IndexVector> PolyIndexVector;
 
   PolyIndexVector index_vector;

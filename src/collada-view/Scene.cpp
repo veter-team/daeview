@@ -264,7 +264,6 @@ Scene::load(const filesystem::path &file)
       for(Geometry::PointList::const_iterator p = g->second.points.begin();
         p != g->second.points.end(); ++p)
       {
-        float f = *p;
         // X
         if(*p > max.getX())
           max.setX(*p);
@@ -272,14 +271,12 @@ Scene::load(const filesystem::path &file)
           min.setX(*p);
         // Y
         ++p;
-        f = *p;
         if(*p > max.getY())
           max.setY(*p);
         else if(*p < min.getY())
           min.setY(*p);
         // Z
         ++p;
-        f = *p;
         if(*p > max.getZ())
           max.setZ(*p);
         else if(*p < min.getZ())
@@ -320,7 +317,7 @@ Scene::load(const filesystem::path &file)
       &(current_node.instance_cameras.at(current_node.instance_cameras.size() - 1)));
 	}
 
-  this->scene_graph.printStatusMessage(std::string("COLLADA_DOM runtime database initialized from ") + file.filename());
+  this->scene_graph.printStatusMessage(std::string("COLLADA_DOM runtime database initialized from ") + file.filename().string());
 }
 
 
@@ -329,7 +326,7 @@ Scene::readNode(const domNodeRef node, SceneGraph::Vertex &parent)
 {
   // just to experiment with fonts
   bool is_font_node = false;
-  size_type pos = std::string(node->getId()).find(SceneGraph::font_name);
+  std::string::size_type pos = std::string(node->getId()).find(SceneGraph::font_name);
   if(pos != std::string::npos)
     is_font_node = true;
 

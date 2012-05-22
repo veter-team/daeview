@@ -61,7 +61,7 @@ ReadMaterial(LoggerFuncT &printStatusMessage,
 bool 
 Scene::readMaterialLibrary(domLibrary_materialsRef lib)
 {
-  filesystem::path dir = this->dae_file_name.directory_string();
+  filesystem::path dir = this->dae_file_name.string();
   const domMaterial_Array &ma = lib->getMaterial_array();
 	for(size_t i = 0; i < ma.getCount(); ++i)
 		ReadMaterial(this->scene_graph.printStatusMessage, 
@@ -99,7 +99,7 @@ Scene::readInstanceMaterial(InstanceGeometry &instance_geometry, domInstance_mat
 		domElement *element = dom_instance->getTarget().getElement();
 		if(element)
 		{
-      filesystem::path dir = this->dae_file_name.directory_string();
+      filesystem::path dir = this->dae_file_name.string();
 			Material::MaterialList::iterator material 
         = ReadMaterial(this->scene_graph.printStatusMessage, 
                        this->scene_graph, 

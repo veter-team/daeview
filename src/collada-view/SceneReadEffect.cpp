@@ -391,15 +391,15 @@ ReadEffect(LoggerFuncT &printStatusMessage,
 bool 
 Scene::readEffectLibrary(domLibrary_effectsRef lib)
 {
-  filesystem::path dir = this->dae_file_name.directory_string();
+  filesystem::path dir = this->dae_file_name.string();
   const domEffect_Array &ea = lib->getEffect_array();
-	for(size_t i = 0; i < ea.getCount(); ++i)
-	{
-		ReadEffect(this->scene_graph.printStatusMessage,
-               &(this->scene_graph), 
-               ea[i], 
-               dir); 
-	}
+  for(size_t i = 0; i < ea.getCount(); ++i)
+    {
+      ReadEffect(this->scene_graph.printStatusMessage,
+		 &(this->scene_graph), 
+		 ea[i], 
+		 dir); 
+    }
 
-	return true;
+  return true;
 }
