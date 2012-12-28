@@ -162,7 +162,7 @@ namespace {
 // A simple structure to help alloc/free xmlTextReader objects
 struct xmlTextReaderHelper {
 	xmlTextReaderHelper(const daeURI& uri) {
-		if((reader = xmlReaderForFile(cdom::fixUriForLibxml(uri.str()).c_str(), NULL, 0)))
+		if((reader = xmlReaderForFile(cdom::fixUriForLibxml(uri.str()).c_str(), NULL, XML_PARSE_HUGE)))
 		   xmlTextReaderSetErrorHandler(reader, libxmlErrorHandler, NULL);
 	}
 

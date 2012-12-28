@@ -19,10 +19,12 @@
 #include "AbstractCommand.h"
 #include "PrintStatusMsg.h"
 
-/* screen width, height, and bit depth */
+/** screen width, height, and bit depth
+ *  1.77 - default Blender's camera aspect ratio
+ */
 #define SCREEN_WIDTH  1000
-#define SCREEN_HEIGHT 800
-#define SCREEN_BPP     16
+#define SCREEN_HEIGHT int(float(SCREEN_WIDTH) / 1.777778)
+#define SCREEN_BPP    16
 
 
 void 

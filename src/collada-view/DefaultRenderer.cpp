@@ -346,26 +346,29 @@ DefaultRenderer::setupCamera(int window_width, int window_height)
 	if(inst == NULL || node == NULL)
     return;
 
-	// Recalculate the aspect in case the window size has changed.
+  // Recalculate the aspect in case the window size has changed.
 
   Camera::CameraList::const_iterator ac = this->scene_graph->all_cameras.find(inst->abstract_camera_ref);
   assert(ac != this->scene_graph->all_cameras.end());
   const Camera &abstract_camera = ac->second;
 
-	float aspect;
-	if(window_width > 0 && window_height > 0)
+  float aspect;
+/*  if(window_width > 0 && window_height > 0)
   {
-		// If the window size is set, make the aspect ratio match it
-		aspect = (float)window_width / (float)window_height;
+    // If the window size is set, make the aspect ratio match it
+    aspect = (float)window_width / (float)window_height;
     glViewport(0, 0, window_width, window_height); 
   }
-	else if(abstract_camera.aspect > 0.0)
-		// No window size set, use the aspect ratio from the camera
-		aspect = abstract_camera.aspect;
-	else // Otherwise default to 16 by 9 (HDTV)
-		aspect = 16.0f / 9.0f;
+  else*/ if(abstract_camera.aspect > 0.0)
+    // No window size set, use the aspect ratio from the camera
+    aspect = abstract_camera.aspect;
+  else // Otherwise default to 16 by 9 (HDTV)
+    aspect = 16.0f / 9.0f;
 
-  this->perspective_matrix = Matrix4::perspective(abstract_camera.Xfov, aspect, abstract_camera.ZNear, abstract_camera.ZFar);
+  this->perspective_matrix = Matrix4::perspective(abstract_camera.Xfov / aspect, 
+                                                  aspect, 
+                                                  abstract_camera.ZNear, 
+                                                  abstract_camera.ZFar);
 }
 
 
@@ -471,3 +474,4 @@ DefaultRenderer::render()
     }
   }
 }
+
